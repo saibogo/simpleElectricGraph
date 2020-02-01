@@ -1,4 +1,4 @@
-package baseConcepts;
+package controllers;
 
 public class Voltage {
 
