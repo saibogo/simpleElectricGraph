@@ -1,8 +1,5 @@
 package baseConcept.onePhased;
 
-import baseConcept.AbstractElement;
-
-
 public class OnePhasedLine extends AbstractOnePhasedElement {
 
     protected Double criticalAmperage;
