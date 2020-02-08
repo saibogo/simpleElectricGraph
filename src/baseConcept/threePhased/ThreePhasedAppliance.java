@@ -1,32 +1,29 @@
-package baseConcept.onePhased;
+package baseConcept.threePhased;
 
 import baseConcept.AbstractElement;
 
-public class OnePhasedCircuitBreaker extends AbstractOnePhasedElement {
+public class ThreePhasedAppliance extends AbstractThreePhasedElement {
 
     protected Double criticalAmperage;
 
-    protected OnePhasedCircuitBreaker(Builder builder) {
+    protected ThreePhasedAppliance(Builder builder) {
         super(builder);
         this.criticalAmperage = builder.criticalAmperage;
-    }
 
-    @Override
-    public String toString() {
-        return this.description + "(" + this.name + ")";
     }
 
     public boolean isCriticalAmperage() {
         return this.criticalAmperage < this.getMaximalAmperage();
     }
 
-    public static class Builder extends AbstractOnePhasedElement.Builder {
+
+    public static class Builder extends AbstractThreePhasedElement.Builder {
 
         protected Double criticalAmperage;
 
         @Override
-        public OnePhasedCircuitBreaker build() {
-            return new OnePhasedCircuitBreaker(this);
+        public ThreePhasedAppliance build() {
+            return new ThreePhasedAppliance(this);
         }
 
         @Override
@@ -34,6 +31,6 @@ public class OnePhasedCircuitBreaker extends AbstractOnePhasedElement {
             this.criticalAmperage = amperage;
             return this;
         }
-    }
 
+    }
 }

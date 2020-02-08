@@ -1,43 +1,66 @@
 package controllers;
 
+
 import baseConcept.AbstractElement;
-import baseConcept.onePhased.OnePhasedScheme;
+import baseConcept.onePhased.AbstractOnePhasedElement;
+import baseConcept.threePhased.AbstractThreePhasedElement;
+import pairs.Triple;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TreeController {
-    public static int getMaximalLengthTree(AbstractElement element) {
-        if (!element.isHaveChildren() || element instanceof OnePhasedScheme) {
-            return 1;
-        }
 
-        int result = 0;
-        for (AbstractElement child: element.getChildren()) {
-                result = Math.max(result, getMaximalLengthTree(child));
-        }
-        return result + 1;
-    }
+    public static List<Triple<Integer, AbstractElement, Phases>> childTreeLevelList(AbstractElement element) {
+        List<Triple<Integer, AbstractElement, Phases>> result = new ArrayList<>();
+        if (element.isHaveChildren()) {
+            if (element instanceof AbstractOnePhasedElement) {
+                for (AbstractElement child: element.getChildren()) {
+                    result.add(new Triple<>(1, child, Phases.ANY));
 
-    public static List<AbstractElement> getAllElementLevelN(AbstractElement element, int level) {
-        List<AbstractElement> result = new ArrayList<>();
-        if (level == 1 || element instanceof OnePhasedScheme) {
-            result.add(element);
-        } else if (level > 1) {
-            for (AbstractElement child: element.getChildren()) {
-                result.addAll(getAllElementLevelN(child, level - 1));
+                    List<Triple<Integer, AbstractElement, Phases>> childList = childTreeLevelList(child);
+                    for (Triple<Integer, AbstractElement, Phases> triple : childList) {
+                        result.add(new Triple<>(triple.getFirst() + 1, triple.getSecond(), triple.getLast()));
+                    }
+                }
+            } else {
+                for (AbstractElement child: ((AbstractThreePhasedElement)element).getChildrenABC()) {
+                    result.add(new Triple<>(1, child, Phases.ABC));
+
+                    List<Triple<Integer, AbstractElement, Phases>> childList = childTreeLevelList(child);
+                    for (Triple<Integer, AbstractElement, Phases> triple : childList) {
+                        result.add(new Triple<>(triple.getFirst() + 1, triple.getSecond(), triple.getLast()));
+                    }
+                }
+
+                for (AbstractElement child: ((AbstractThreePhasedElement)element).getChildrenA()) {
+                    result.add(new Triple<>(1, child, Phases.A));
+
+                    List<Triple<Integer, AbstractElement, Phases>> childList = childTreeLevelList(child);
+                    for (Triple<Integer, AbstractElement, Phases> triple : childList) {
+                        result.add(new Triple<>(triple.getFirst() + 1, triple.getSecond(), Phases.A));
+                    }
+                }
+
+                for (AbstractElement child: ((AbstractThreePhasedElement)element).getChildrenB()) {
+                    result.add(new Triple<>(1, child, Phases.B));
+
+                    List<Triple<Integer, AbstractElement, Phases>> childList = childTreeLevelList(child);
+                    for (Triple<Integer, AbstractElement, Phases> triple : childList) {
+                        result.add(new Triple<>(triple.getFirst() + 1, triple.getSecond(), Phases.B));
+                    }
+                }
+
+                for (AbstractElement child: ((AbstractThreePhasedElement)element).getChildrenC()) {
+                    result.add(new Triple<>(1, child, Phases.C));
+
+                    List<Triple<Integer, AbstractElement, Phases>> childList = childTreeLevelList(child);
+                    for (Triple<Integer, AbstractElement, Phases> triple : childList) {
+                        result.add(new Triple<>(triple.getFirst() + 1, triple.getSecond(), Phases.C));
+                    }
+                }
             }
         }
         return result;
     }
-
-    public static int countOfElements(AbstractElement element) {
-        int result = 1;
-        if (element instanceof OnePhasedScheme || !element.isHaveChildren()) {
-        } else {
-            for (AbstractElement child: element.getChildren()) result += countOfElements(child);
-        }
-        return result;
-    }
-
 }

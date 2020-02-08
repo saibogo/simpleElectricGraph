@@ -11,9 +11,12 @@ public class OnePhasedScheme extends AbstractOnePhasedElement {
     @Override
     public boolean addChildren(AbstractElement element) {
         if (this.children.size() == 1) return false;
-
-        this.children.add(element);
-        return true;
+        if (element instanceof AbstractOnePhasedElement) {
+            this.children.add((AbstractOnePhasedElement) element);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static class Builder extends AbstractOnePhasedElement.Builder {

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class AbstractOnePhasedElement extends AbstractElement {
 
-    protected List<AbstractElement> children;
+    protected List<AbstractOnePhasedElement> children;
 
     protected AbstractOnePhasedElement(Builder builder) {
         super(builder);
@@ -34,8 +34,12 @@ public class AbstractOnePhasedElement extends AbstractElement {
 
     @Override
     public boolean addChildren(AbstractElement element) {
-        this.children.add(element);
-        return true;
+        if (element instanceof AbstractOnePhasedElement) {
+            this.children.add((AbstractOnePhasedElement) element);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 

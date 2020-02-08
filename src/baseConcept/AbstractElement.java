@@ -38,6 +38,11 @@ public class AbstractElement {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return this.name + " (" + this.description + ")";
+    }
+
     public static class Builder {
         protected String name;
         protected String description;

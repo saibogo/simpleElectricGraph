@@ -25,6 +25,10 @@ public class OnePhasedLine extends AbstractOnePhasedElement {
         return this.getMaximalAmperage() * this.getMaximalAmperage() * this.getFullResistance();
     }
 
+    @Override
+    public String toString() {
+        return this.description + " L = " + this.length + " м.(" + this.name + ")";
+    }
 
     public static class Builder extends AbstractOnePhasedElement.Builder {
 
