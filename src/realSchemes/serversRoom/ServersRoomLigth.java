@@ -1,9 +1,9 @@
 package realSchemes.serversRoom;
 
-import baseConcept.AbstractElement;
-import baseConcept.onePhased.OnePhasedScheme;
-import models.cables.VVGng3x1_5;
-import models.lamps.LED_Navigator36;
+import models.AbstractElement;
+import models.onePhased.OnePhasedScheme;
+import realModels.cables.VVGng3x1_5;
+import realModels.lamps.LED_Navigator36;
 
 final public class ServersRoomLigth {
 

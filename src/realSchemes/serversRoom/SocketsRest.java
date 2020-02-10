@@ -1,8 +1,8 @@
 package realSchemes.serversRoom;
 
-import baseConcept.AbstractElement;
-import baseConcept.onePhased.OnePhasedScheme;
-import models.cables.VVGng3x2_5;
+import models.AbstractElement;
+import models.onePhased.OnePhasedScheme;
+import realModels.cables.VVGng3x2_5;
 
 final public class SocketsRest {
 

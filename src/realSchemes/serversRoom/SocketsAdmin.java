@@ -1,11 +1,11 @@
 package realSchemes.serversRoom;
 
-import baseConcept.AbstractElement;
-import baseConcept.onePhased.OnePhasedScheme;
-import models.boilers.Polaris_PWK_1765_CAR;
-import models.cables.VVGng3x2_5;
-import models.computers.ComputerSystemUnit;
-import models.computers.MonitorsAny;
+import models.AbstractElement;
+import models.onePhased.OnePhasedScheme;
+import realModels.boilers.Polaris_PWK_1765_CAR;
+import realModels.cables.VVGng3x2_5;
+import realModels.computers.ComputerSystemUnit;
+import realModels.computers.MonitorsAny;
 
 final public class SocketsAdmin {
 

@@ -1,19 +1,16 @@
 package view;
 
-import baseConcept.AbstractElement;
-import baseConcept.onePhased.AbstractOnePhasedElement;
-import baseConcept.onePhased.OnePhasedCircuitBreaker;
-import baseConcept.onePhased.OnePhasedLine;
-import baseConcept.onePhased.OnePhasedScheme;
-import baseConcept.threePhased.AbstractThreePhasedElement;
+import models.AbstractElement;
+import models.onePhased.AbstractOnePhasedElement;
+import models.onePhased.OnePhasedCircuitBreaker;
+import models.onePhased.OnePhasedLine;
+import models.threePhased.AbstractThreePhasedElement;
+import models.threePhased.ThreePhasedLine;
 import controllers.Phases;
 import controllers.TreeController;
-import pairs.Triple;
+import anyConception.triple.Triple;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ElementView {
 
@@ -58,6 +55,11 @@ public class ElementView {
             System.out.println("Ток выше максимального?:" + ((OnePhasedLine) element).isCriticalAmperage());
             System.out.println("Тепловые потери: " + ((OnePhasedLine) element).getHeatLoss() + " W.");
         }
+        if (element instanceof ThreePhasedLine) {
+            System.out.println("Ток выше максимального:" + ((ThreePhasedLine) element).isCriticalAmperage());
+            System.out.println("Максимальные тепловые потери:" + ((ThreePhasedLine) element).getHeatLoss() + " W.");
+        }
+
         if (element instanceof OnePhasedCircuitBreaker) {
             System.out.println("Ток выше максимального?:" + ((OnePhasedCircuitBreaker) element).isCriticalAmperage());
         }

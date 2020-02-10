@@ -1,11 +1,11 @@
 package realSchemes.serversRoom;
 
-import baseConcept.AbstractElement;
-import baseConcept.onePhased.OnePhasedConsumer;
-import baseConcept.onePhased.OnePhasedLine;
-import baseConcept.onePhased.OnePhasedScheme;
-import models.cables.VVGng3x4;
-import models.ups.Smart_UPS_3000;
+import models.AbstractElement;
+import models.onePhased.OnePhasedConsumer;
+import models.onePhased.OnePhasedLine;
+import models.onePhased.OnePhasedScheme;
+import realModels.cables.VVGng3x4;
+import realModels.ups.Smart_UPS_3000;
 
 final public class RightServers {
     public static OnePhasedScheme consumer() {

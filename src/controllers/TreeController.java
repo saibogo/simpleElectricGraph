@@ -1,10 +1,10 @@
 package controllers;
 
 
-import baseConcept.AbstractElement;
-import baseConcept.onePhased.AbstractOnePhasedElement;
-import baseConcept.threePhased.AbstractThreePhasedElement;
-import pairs.Triple;
+import models.AbstractElement;
+import models.onePhased.AbstractOnePhasedElement;
+import models.threePhased.AbstractThreePhasedElement;
+import anyConception.triple.Triple;
 
 import java.util.ArrayList;
 import java.util.List;
